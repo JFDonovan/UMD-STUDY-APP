@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Study App Login</string>
-    <string name="imgDesc">UMD LOGO</string>
+    <string name="app_name">UMD-STUDY-APP</string>
+    <string name="action_add_class">Add Class</string>
+    <string name="action_TODO">TODO List</string>
 </resources>

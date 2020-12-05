@@ -1,1 +1,0 @@
-# UMD-STUDY-APP

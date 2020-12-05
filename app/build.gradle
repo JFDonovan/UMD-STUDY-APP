@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.e.studyapplogin"
+        applicationId "com.example.umd_study_app"
         minSdkVersion 29
         targetSdkVersion 30
         versionCode 1
@@ -30,30 +30,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
-<<<<<<< HEAD
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
-<<<<<<< HEAD
-    implementation 'com.google.firebase:firebase-database:16.0.4'
-=======
->>>>>>> 392512b6474b0a9e1a4513913193cf76670d25da
+    implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation platform('com.google.firebase:firebase-bom:26.1.0')
-    implementation platform('com.google.firebase:firebase-bom:25.12.0')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-    implementation 'com.google.firebase:firebase-auth-ktx'
-    implementation 'com.google.firebase:firebase-firestore-ktx'
-<<<<<<< HEAD
-    implementation 'com.google.firebase:firebase-database-ktx'
-=======
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
->>>>>>> parent of 4628627... working_login_register
 
 }
-=======
-
-}
->>>>>>> 392512b6474b0a9e1a4513913193cf76670d25da
