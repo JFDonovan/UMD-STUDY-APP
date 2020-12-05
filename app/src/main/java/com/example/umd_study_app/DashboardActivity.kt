@@ -22,7 +22,6 @@ class DashboardActivity : AppCompatActivity() {
 
     // Must be put together from database
     private var classObjects: ArrayList<Class> = arrayListOf()
-    private var classButtons: ArrayList<Button>? = null
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.my_menu, menu)
@@ -74,7 +73,6 @@ class DashboardActivity : AppCompatActivity() {
                 }
                 startActivity(intent)
             }
-            //classButtons?.add(buttonTemp)
             class_button_layout.addView(buttonTemp)
         }
         var addClassButton = Button(this)
