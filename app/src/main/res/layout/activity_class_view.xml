@@ -23,18 +23,21 @@
             android:id="@+id/notesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:height="100dp"
             android:text="Notes" />
 
         <Button
             android:id="@+id/flashcardsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:height="100dp"
             android:text="Flashcards" />
 
         <Button
             android:id="@+id/resourcesButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:height="100dp"
             android:text="Resources" />
 
     </LinearLayout>
