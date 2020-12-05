@@ -6,4 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".TodoActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <TextView
+            android:id="@+id/todoListHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="32dp"
+            android:text="TODO List" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
