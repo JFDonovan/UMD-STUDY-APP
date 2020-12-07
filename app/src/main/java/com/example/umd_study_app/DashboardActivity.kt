@@ -53,7 +53,7 @@ class DashboardActivity : AppCompatActivity() {
             // TODO: get class objects from database based on userClasses
             classObjects.add(/*TODO ADD DATABASE RETRIEVAL CODE HERE ; temporary CLass ->*/ Class(
                 className = "Example Class",
-                notes = hashMapOf("id123" to "notes on stuffs", "id456" to "more stuffs"),
+                //notes = hashMapOf("id123" to "notes on stuffs", "id456" to "more stuffs"),
                 flashcards = HashMap<String, HashMap<String, String>>(),
                 resources = hashMapOf("id123" to File("example.txt"))
             ))
@@ -66,7 +66,7 @@ class DashboardActivity : AppCompatActivity() {
                 Log.i(TAG, classObj.className)
                 val intent = Intent(this, ClassViewActivity::class.java).apply {
                     putExtra("className", classObj.className)
-                    putExtra("classNotes", classObj.notes)
+                    //putExtra("classNotes", classObj.notes)
                     putExtra("classFlashcards", classObj.flashcards)
                     putExtra("classResources", classObj.resources)
                 }

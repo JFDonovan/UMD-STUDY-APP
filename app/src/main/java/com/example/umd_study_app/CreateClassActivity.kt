@@ -33,6 +33,8 @@ class CreateClassActivity : AppCompatActivity() {
     //    val myRef = database.getReference("message")
 
    //     myRef.setValue("Hello, World!")
+        val context = this
+
 
         createClassSubmitButton.setOnClickListener {
             var name = createClassNameView.text
@@ -44,13 +46,27 @@ class CreateClassActivity : AppCompatActivity() {
 
 
 
-            var mClass : Class = Class(name.toString(), notes,  flashcards, resources)
+            var mClass : Class = Class(name.toString(), flashcards, resources)
+            var db = DataBaseHandler(context)
+            db.insertData(mClass)
             //mDatabaseReference.setValue("Test Connection")
-            databaseClasses.push()
-            databaseClasses.child(name.toString()).setValue(mClass)
-            databaseClasses.push()
+            //databaseClasses.push()
+            //val id = databaseClasses.child("classes").push()
+            //databaseClasses.child("classes").setValue(mClass)
+            //databaseClasses.child("classes").push()
+
+            //val firebaseAuth = FirebaseDatabase.getInstance().getReference("/").child("classes")
+            //val dbref = firebaseAuth.toString()
+            //Log.i(TAG, "DBREF: $dbref")
+            //databaseClasses.push()
            // mDatabaseReference.child("class").child(name.toString()).setValue(mClass)
-            Log.i(TAG, "Class Created: $databaseClasses")
+            //Log.i(TAG, "Class Created: $result2")
+            var data = db.readData()
+            var test = ""
+            for (i in 0..(data.size-1)){
+                test = test + (data.get(i)[0] + " " + data.get(i)[1] + " " + data.get(i)[2] + " " + data.get(i)[3] )
+            }
+            Log.i(TAG, "TESTING" + test)
             finish()
         }
     }
