@@ -1,5 +1,6 @@
 package com.example.umd_study_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,9 +18,9 @@ class ClassViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_class_view)
 
-        classId = intent.extras?.get("classId") as String
+       // classId = intent.extras?.get("classId") as String
         className = intent.extras?.get("className") as String
-        classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
+        //classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
         classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, Array<String>>
         classResources = intent.extras?.get("classResources") as HashMap<String, File>
 
@@ -34,6 +35,10 @@ class ClassViewActivity : AppCompatActivity() {
         }
         flashcardsButton.setOnClickListener {
             // TODO: Start flashCards activity, using classFlashcards as the data
+            val intent = Intent(this, FlashcardActivity::class.java).apply {
+                putExtra("flashcards", classFlashcards)
+            }
+            startActivity(intent)
         }
         resourcesButton.setOnClickListener {
             // TODO: Start resources activity, using classResources as the data
