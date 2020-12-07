@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
 import java.io.File
 
 class ClassViewActivity : AppCompatActivity() {
@@ -28,6 +29,8 @@ class ClassViewActivity : AppCompatActivity() {
         val notesButton = findViewById<Button>(R.id.notesButton)
         val flashcardsButton = findViewById<Button>(R.id.flashcardsButton)
         val resourcesButton = findViewById<Button>(R.id.resourcesButton)
+
+        val user = FirebaseAuth.getInstance().currentUser?.email
 
         classNameView.text = className
         notesButton.setOnClickListener {

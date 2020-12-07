@@ -55,9 +55,11 @@ class DashboardActivity : AppCompatActivity() {
         var teststringarray = Array (100){ "test" }
         teststringarray[1] = "test2"
         var testflashcard = HashMap<String, Array<String>>()
-        testflashcard.put("TestKey", teststringarray)
+        var testresource = HashMap<String, Array<String>>()
+        //testflashcard.put("TestKey", teststringarray)
         var gson = Gson()
         var teststr = gson.toJson(testflashcard)
+        var testres = gson.toJson(testresource)
 
 
         for(i in userClasses.indices) {
@@ -66,7 +68,7 @@ class DashboardActivity : AppCompatActivity() {
                 className = "Example Class",
                 //notes = hashMapOf("id123" to "notes on stuffs", "id456" to "more stuffs"),
                 flashcards = teststr,
-                resources = ""
+                resources = testres
             ))
         }
         for (i in 0 until classObjects.size) {

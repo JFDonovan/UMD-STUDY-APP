@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.gson.Gson
@@ -16,6 +17,7 @@ import java.io.File
 class CreateClassActivity : AppCompatActivity() {
 
     private lateinit var databaseClasses: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +27,8 @@ class CreateClassActivity : AppCompatActivity() {
         val createClassNameView = findViewById<EditText>(R.id.createClassNameView)
         val createClassSubmitButton = findViewById<Button>(R.id.createClassSubmitButton)
         var userId = intent.getStringExtra("userId")
+        mAuth = FirebaseAuth.getInstance()
+        var email = mAuth.currentUser!!.email as String
 
 
         //var mDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -46,29 +50,42 @@ class CreateClassActivity : AppCompatActivity() {
             var flashcards : HashMap<String, Array<String>> = HashMap<String, Array<String>>()
             var resources : HashMap<String, File> = HashMap<String, File>()
 
-            var teststringarray = Array (1){ "test" }
+            //var teststringarray = emptyArray<String>()
 
-            var testflashcard = HashMap<String, Array<String>>()
-            testflashcard.put("TestKey", teststringarray)
+            //var testflashcard = HashMap<String, Array<String>>()
+            //var teststr = gson.toJson(testflashcard)
+            //Toast.makeText(context, teststr, Toast.LENGTH_LONG).show()
+
+            //flashcards.put("TestKey", emptyArray<String>())
+
 
             var gson = Gson()
+            var flashstring = gson.toJson(flashcards) as String
 
-            var teststr = gson.toJson(testflashcard)
-            //Toast.makeText(context, teststr, Toast.LENGTH_LONG).show()
-            var teststr1 = gson.toJson(resources)
+            var resstring = gson.toJson(resources) as String
 
-            var mClass : Class = Class(name.toString(), "{}", "{}")
+            var mClass : Class = Class(name.toString(), flashstring, resstring)
+            var mUser : User = User(email, resstring, resstring)
+
             var db = DataBaseHandler(context)
 
             //db.deleteDataBase()
-            db.insertData(mClass)
+            var res = db.insertClass(mClass)
 
-            var data = db.readData()
-            var test = ""
-            for (i  in 0..(data.size - 1)){
-                test = test + data[i].toString()
-                Log.i(TAG, "TESTING " + test.toString())
+            if (res == -1.toLong()){
+                Toast.makeText(context, "Failed", Toast.LENGTH_LONG).show()
+            } else {
+                Toast.makeText(context, "Success", Toast.LENGTH_LONG).show()
             }
+
+            var data = db.readClass()
+            Toast.makeText(context, data.toString(), Toast.LENGTH_LONG).show()
+
+           // var test = ""
+           // for (i  in 0..(data.size - 1)){
+           //     test = test + data[i].toString()
+           //     Log.i(TAG, "TESTING " + test.toString())
+            //}
 
 
             finish()
