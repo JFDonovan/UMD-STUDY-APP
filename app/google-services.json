@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1032297520789",
+    "project_id": "umd-study-app-34b5c",
+    "storage_bucket": "umd-study-app-34b5c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032297520789:android:4e1efbb4443ec8f943c59c",
+        "android_client_info": {
+          "package_name": "com.example.umd_study_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032297520789-ncnoeghn3gj3lkh3cejc8rutud0nqngc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZQhJjqDu-PM1zW1URXTWsgJPfH-IrgJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032297520789-ncnoeghn3gj3lkh3cejc8rutud0nqngc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

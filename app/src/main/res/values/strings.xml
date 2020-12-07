@@ -2,4 +2,11 @@
     <string name="app_name">UMD-STUDY-APP</string>
     <string name="action_add_class">Add Class</string>
     <string name="action_TODO">TODO List</string>
+    <string name="account_login">Account Login</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="register_new_account">Register new account</string>
+    <string name="imgDesc">UMD LOGO</string>
 </resources>

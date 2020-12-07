@@ -3,15 +3,20 @@ package com.example.umd_study_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.io.File
 
 class ClassViewActivity : AppCompatActivity() {
     private var classId: String = ""
     private var className: String = ""
     private var classNotes: HashMap<String, String>? = null
-    private var classFlashcards: HashMap<String, Array<String>>? = null
+    private var classFlashcards: HashMap<String, ArrayList<String>>? = null
     private var classResources: HashMap<String, File>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,8 +26,26 @@ class ClassViewActivity : AppCompatActivity() {
         classId = intent.extras?.get("classId") as String
         className = intent.extras?.get("className") as String
         classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
-        classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, Array<String>>
+        classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, ArrayList<String>>
         classResources = intent.extras?.get("classResources") as HashMap<String, File>
+
+        // Add Database listeners for updates
+        FirebaseDatabase.getInstance().getReference("Classes").child(classId).addValueEventListener(object :
+            ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Log.i(DashboardActivity.TAG, "CLASS DATABASE OBJECT CHANGED: $classId")
+                val classTemp = dataSnapshot.getValue(Class::class.java)
+                if (classTemp != null) {
+                    className = classTemp.className
+                    classNotes = classTemp.notes
+                    classFlashcards = classTemp.flashcards
+                    classResources = classTemp.resources
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.e(DashboardActivity.TAG, "FAILED TO READ CLASS DATABASE")
+            }
+        })
 
         val classNameView = findViewById<TextView>(R.id.classNameView)
         val notesButton = findViewById<Button>(R.id.notesButton)
