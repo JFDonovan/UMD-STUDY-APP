@@ -66,6 +66,7 @@ class CreateClassActivity : AppCompatActivity() {
             for (i in 0..(data.size-1)){
                 test = test + (data.get(i)[0] + " " + data.get(i)[1] + " " + data.get(i)[2] + " " + data.get(i)[3] )
             }
+
             Log.i(TAG, "TESTING" + test)
             finish()
         }

@@ -2,9 +2,12 @@ package com.example.umd_study_app
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -29,6 +32,22 @@ class FlashcardActivity : AppCompatActivity() {
     // Swipe variables
     private var touchX1 : Float = -1F
     private val MIN_DISTANCE = 150
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.flashcard_activity_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.i(AddFlashcardActivity.TAG, "${item.title}")
+        if (item.title == "Add Flashcard") {
+            val intent = Intent(this, AddFlashcardActivity::class.java).apply {
+                putExtra("classId", intent.getStringExtra("classId"))
+            }
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,7 +97,7 @@ class FlashcardActivity : AppCompatActivity() {
     }
 
     private fun setFlashcardText() {
-        mCardFrontText!!.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![0]
+        mCardFrontText?.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![0]
         mCardBackText!!.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![1]
     }
 
