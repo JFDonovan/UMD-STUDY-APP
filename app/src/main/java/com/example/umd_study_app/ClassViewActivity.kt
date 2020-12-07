@@ -1,5 +1,6 @@
 package com.example.umd_study_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -34,6 +35,10 @@ class ClassViewActivity : AppCompatActivity() {
         }
         flashcardsButton.setOnClickListener {
             // TODO: Start flashCards activity, using classFlashcards as the data
+            val intent = Intent(this, FlashcardActivity::class.java).apply {
+                putExtra("flashcards", classFlashcards)
+            }
+            startActivity(intent)
         }
         resourcesButton.setOnClickListener {
             // TODO: Start resources activity, using classResources as the data

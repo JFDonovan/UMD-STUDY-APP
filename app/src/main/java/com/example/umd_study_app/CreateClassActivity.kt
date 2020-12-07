@@ -18,7 +18,9 @@ class CreateClassActivity : AppCompatActivity() {
         createClassSubmitButton.setOnClickListener {
             var name = createClassNameView.text
             Log.i(TAG, "Create Class: $name")
-            // TODO: send new class to database with "name" as name and userId as user id NOTE: make sure that adding to database causes classview to update (timing may get weird causing need to wait for response that writing was successful)
+            // TODO: send new class to database with "name" as name and userId as user id NOTE: make
+            //  sure that adding to database causes classview to update (timing may get weird causing
+            //  need to wait for response that writing was successful)
 
             finish()
         }

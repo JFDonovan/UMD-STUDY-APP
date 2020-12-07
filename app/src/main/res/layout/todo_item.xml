@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textAppearance="?android:attr/textAppearanceLarge" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/todoItemStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/todoItemStatusCheckBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="17dp"
+        android:text="Done:" >
+    </TextView>
+
+    <CheckBox
+        android:id="@+id/todoItemStatusCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="52dp"
+        android:layout_toRightOf="@+id/todoItemStatusLabel" >
+    </CheckBox>
+
+    <TextView
+        android:id="@+id/todoItemPriorityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/todoItemStatusCheckBox"
+        android:layout_alignTop="@+id/todoItemStatusLabel"
+        android:layout_toLeftOf="@+id/todoItemPriorityView"
+        android:text="Priority:" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/todoItemPriorityView"
+        android:layout_width="50dip"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/todoItemStatusCheckBox"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/todoItemStatusLabel" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/todoItemDateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/todoItemStatusCheckBox"
+        android:text="Date:" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/todoItemDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/todoItemDateLabel"
+        android:layout_toRightOf="@+id/todoItemDateLabel" >
+    </TextView>
+
+</RelativeLayout>
