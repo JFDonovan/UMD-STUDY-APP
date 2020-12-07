@@ -37,6 +37,7 @@ class ClassViewActivity : AppCompatActivity() {
             // TODO: Start flashCards activity, using classFlashcards as the data
             val intent = Intent(this, FlashcardActivity::class.java).apply {
                 putExtra("flashcards", classFlashcards)
+                putExtra("classId", classId)
             }
             startActivity(intent)
         }
