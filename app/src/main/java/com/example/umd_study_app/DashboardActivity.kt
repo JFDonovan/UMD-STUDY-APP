@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import java.io.File
 import java.util.*
+import kotlin.collections.HashMap
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -51,10 +52,9 @@ class DashboardActivity : AppCompatActivity() {
         for(i in userClasses.indices) {
             // TODO: get class objects from database based on userClasses
             classObjects.add(/*TODO ADD DATABASE RETRIEVAL CODE HERE ; temporary CLass ->*/ Class(
-                id = "yabadabadoo",
                 className = "Example Class",
                 notes = hashMapOf("id123" to "notes on stuffs", "id456" to "more stuffs"),
-                flashcards = hashMapOf("id123" to arrayOf("2 + 2 = ", "4"), "id456" to arrayOf("3 + 3 = ", "6")),
+                flashcards = HashMap<String, HashMap<String, String>>(),
                 resources = hashMapOf("id123" to File("example.txt"))
             ))
         }
@@ -65,7 +65,6 @@ class DashboardActivity : AppCompatActivity() {
             buttonTemp.setOnClickListener {
                 Log.i(TAG, classObj.className)
                 val intent = Intent(this, ClassViewActivity::class.java).apply {
-                    putExtra("classId", classObj.id)
                     putExtra("className", classObj.className)
                     putExtra("classNotes", classObj.notes)
                     putExtra("classFlashcards", classObj.flashcards)
