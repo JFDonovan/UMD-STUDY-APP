@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import java.io.File
 import java.util.*
@@ -49,13 +50,23 @@ class DashboardActivity : AppCompatActivity() {
         userClasses = arrayOf("TEMP", "TEMP", "TEMP")//, "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP") // TEMP
         todoItems = hashMapOf(Date() to hashMapOf("task" to "Eat ur homework", "category" to "Example Class")) // TEMP
 
+
+
+        var teststringarray = Array (100){ "test" }
+        teststringarray[1] = "test2"
+        var testflashcard = HashMap<String, Array<String>>()
+        testflashcard.put("TestKey", teststringarray)
+        var gson = Gson()
+        var teststr = gson.toJson(testflashcard)
+
+
         for(i in userClasses.indices) {
             // TODO: get class objects from database based on userClasses
             classObjects.add(/*TODO ADD DATABASE RETRIEVAL CODE HERE ; temporary CLass ->*/ Class(
                 className = "Example Class",
                 //notes = hashMapOf("id123" to "notes on stuffs", "id456" to "more stuffs"),
-                flashcards = HashMap<String, HashMap<String, String>>(),
-                resources = hashMapOf("id123" to File("example.txt"))
+                flashcards = teststr,
+                resources = ""
             ))
         }
         for (i in 0 until classObjects.size) {

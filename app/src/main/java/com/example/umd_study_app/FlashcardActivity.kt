@@ -12,6 +12,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import com.google.gson.Gson
 import kotlin.math.abs
 
 class FlashcardActivity : AppCompatActivity() {
@@ -61,6 +62,8 @@ class FlashcardActivity : AppCompatActivity() {
         mSetLeftIn = AnimatorInflater.loadAnimator(this, R.animator.flip_in_animation) as AnimatorSet
         changeCameraDistance()
 
+        var gson = Gson()
+        mFlashcards = gson.fromJson(intent.extras?.get("flashcards") as String, HashMap<String, Array<String>>()::class.java)
         mFlashcards = intent.extras?.get("flashcards") as HashMap<String, Array<String>>
         for ((key, _) in mFlashcards!!) {
             mFlashcardKeyList.add(key)
@@ -97,7 +100,7 @@ class FlashcardActivity : AppCompatActivity() {
     }
 
     private fun setFlashcardText() {
-        mCardFrontText?.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![0]
+        mCardFrontText!!.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![0]
         mCardBackText!!.text = mFlashcards!![mFlashcardKeyList!![mCurrentFlashcard]]!![1]
     }
 

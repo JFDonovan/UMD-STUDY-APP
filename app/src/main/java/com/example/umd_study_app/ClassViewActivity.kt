@@ -11,8 +11,8 @@ class ClassViewActivity : AppCompatActivity() {
     private var classId: String = ""
     private var className: String = ""
     private var classNotes: HashMap<String, String>? = null
-    private var classFlashcards: HashMap<String, Array<String>>? = null
-    private var classResources: HashMap<String, File>? = null
+    private var classFlashcards: String = ""
+    private var classResources: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +21,8 @@ class ClassViewActivity : AppCompatActivity() {
        // classId = intent.extras?.get("classId") as String
         className = intent.extras?.get("className") as String
         //classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
-        classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, Array<String>>
-        classResources = intent.extras?.get("classResources") as HashMap<String, File>
+        classFlashcards = intent.extras?.get("classFlashcards") as String
+        classResources = intent.extras?.get("classResources") as String
 
         val classNameView = findViewById<TextView>(R.id.classNameView)
         val notesButton = findViewById<Button>(R.id.notesButton)
