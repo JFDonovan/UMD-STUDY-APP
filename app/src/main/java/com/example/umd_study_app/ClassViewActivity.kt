@@ -54,7 +54,6 @@ class ClassViewActivity : AppCompatActivity() {
         val classNameView = findViewById<TextView>(R.id.classNameView)
         val notesButton = findViewById<Button>(R.id.notesButton)
         val flashcardsButton = findViewById<Button>(R.id.flashcardsButton)
-        val resourcesButton = findViewById<Button>(R.id.resourcesButton)
         val classCodeView = findViewById<TextView>(R.id.classCodeView)
 
         // Set class name and id fields (id is selectable)
@@ -78,8 +77,6 @@ class ClassViewActivity : AppCompatActivity() {
             }
             startActivity(intent)
         }
-        resourcesButton.setOnClickListener {
-            // TODO: Start resources activity, using classResources as the data
-        }
+
     }
 }

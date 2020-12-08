@@ -5,15 +5,16 @@
     <!-- "Mark Favorite", should appear as action button if possible -->
     <item
         android:id="@+id/action_add_class"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="@string/action_add_class"
-        app:showAsAction="ifRoom"
-        app:actionViewClass="android.widget.AdapterView" />
+        app:actionViewClass="android.widget.AdapterView"
+        app:showAsAction="ifRoom" />
 
     <!-- Settings, should always be in the overflow -->
-    <item android:id="@+id/action_TODO"
+    <item
+        android:id="@+id/action_TODO"
+        android:icon="@android:drawable/checkbox_on_background"
         android:title="@string/action_TODO"
-        android:icon="@drawable/ic_launcher_background"
         app:showAsAction="ifRoom" />
 
 </menu>
