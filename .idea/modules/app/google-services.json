@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "96905435543",
+    "firebase_url": "https://umdstudyapp-default-rtdb.firebaseio.com",
+    "project_id": "umdstudyapp",
+    "storage_bucket": "umdstudyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96905435543:android:e6434769ecf4b19f7a0cd2",
+        "android_client_info": {
+          "package_name": "com.e.studyapplogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96905435543-4lq7ohm1ge2qmt248k2l1p6bo1t679kd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.e.studyapplogin",
+            "certificate_hash": "a6b4c5ca6352aae207c1477bdbb784d37b608008"
+          }
+        },
+        {
+          "client_id": "96905435543-6acun63tgmvr13p2dgrep3huthgb95nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBur6TzU4uSPut-QAxC7Cw92_1KPX1-B3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96905435543-6acun63tgmvr13p2dgrep3huthgb95nl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96905435543:android:775a4fade4e60dbf7a0cd2",
+        "android_client_info": {
+          "package_name": "com.example.umd_study_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96905435543-8c22hahje1eh65t7t8iqiavnj52kqh3e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.umd_study_app",
+            "certificate_hash": "a6b4c5ca6352aae207c1477bdbb784d37b608008"
+          }
+        },
+        {
+          "client_id": "96905435543-6acun63tgmvr13p2dgrep3huthgb95nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBur6TzU4uSPut-QAxC7Cw92_1KPX1-B3I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96905435543-6acun63tgmvr13p2dgrep3huthgb95nl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

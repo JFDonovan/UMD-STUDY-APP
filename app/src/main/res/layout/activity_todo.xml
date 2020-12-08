@@ -17,7 +17,8 @@
             android:id="@+id/todoListHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="32dp"
+            android:textColor="@color/IndianRed"
+            android:textSize="60dp"
             android:text="TODO List" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -41,7 +41,9 @@ class DashboardActivity : AppCompatActivity() {
             showNewClassPopup(findViewById(R.id.action_add_class))
         }
         if (item.title == "TODO List") {
-            val intent = Intent(this, TodoActivity::class.java)
+            val intent = Intent(this, TodoActivity::class.java).apply {
+                putExtra("userId", userId)
+            }
             startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
@@ -54,7 +56,7 @@ class DashboardActivity : AppCompatActivity() {
         userClasses = arrayListOf("TEMP", "TEMP", "TEMP")//, "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP") // TEMP
         todoItems = hashMapOf(100 to hashMapOf("task" to "Eat ur homework", "category" to "Example Class")) // TEMP
 
-        userId = intent.extras?.get("userId") as String
+        userId = intent.extras?.get("userId") as String?
         mThisUserDatabase = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
         mThisUserDatabase.addValueEventListener(object : ValueEventListener {
@@ -96,7 +98,7 @@ class DashboardActivity : AppCompatActivity() {
 
             mClassDatabase.child(userClasses[i]).addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    Log.i(TAG, "CLASS DATABASE OBJECT CHANGED: ${userClasses[i]}")
+                    //Log.i(TAG, "CLASS DATABASE OBJECT CHANGED: ${userClasses!![i]}")
                     val classTemp = dataSnapshot.getValue(Class::class.java)
                     if (classTemp != null) {
                         classObjects.add(classTemp)

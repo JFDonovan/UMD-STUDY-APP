@@ -2,8 +2,6 @@ package com.example.umd_study_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import java.util.Calendar
-import java.util.Date
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -14,15 +12,12 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.Button
-import android.widget.DatePicker
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.TimePicker
+import android.widget.*
 import com.example.umd_study_app.ToDoItem.Priority
 import com.example.umd_study_app.ToDoItem.Status
+import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_add_todo.view.*
+import java.util.*
 
 class AddTodoActivity : Activity() {//AppCompatActivity() {
     /*override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +33,8 @@ class AddTodoActivity : Activity() {//AppCompatActivity() {
     private var mDefaultPriorityButton: RadioButton? = null
     private var dateView: TextView? = null
     private var timeView: TextView? = null
+    private var userId: String? = null
+    //userId = intent.getStringExtra("userId")
 
     private val priority: Priority
         get() {
@@ -79,6 +76,8 @@ class AddTodoActivity : Activity() {//AppCompatActivity() {
         mStatusRadioGroup = findViewById<View>(R.id.statusGroup) as RadioGroup
         dateView = findViewById<View>(R.id.date) as TextView
         timeView = findViewById<View>(R.id.time) as TextView
+
+        var userId = intent.getStringExtra("userId")
 
         // Set the default date and time
 
@@ -130,9 +129,30 @@ class AddTodoActivity : Activity() {//AppCompatActivity() {
             val titleString = mTitleText!!.text.toString()
             val fullDateTime = dateString + " " + timeString
 
+            val priorityid = mPriorityRadioGroup!!.checkedRadioButtonId
+            val priority : RadioButton = findViewById(priorityid)
+            val pr : Priority = Priority.valueOf(priority.text as String)
+            //val prio : Priority = priority!!.priority as Priority
+
+            val statusid = mStatusRadioGroup!!.checkedRadioButtonId
+            val status : RadioButton = findViewById(statusid)
+            val st : Status = Status.valueOf(status.text as String)
+            //val stat : Status = status!!.status as Status
+
+            val todo : ToDoItem = ToDoItem(titleString, pr, st, fullDateTime as Date)
+
+            var userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
+
+            Toast.makeText(this, userRef.key.toString(), Toast.LENGTH_LONG).show()
+
+            userRef!!.child("todo").setValue(todo)
+
+            finish()
+
+
             // TODO - return data Intent and finish
             val intent = Intent()
-            ToDoItem.packageIntent(intent, titleString, priority, status, fullDateTime)
+            ToDoItem.packageIntent(intent, titleString, pr, st, fullDateTime)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
