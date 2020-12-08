@@ -64,6 +64,11 @@ class ClassViewActivity : AppCompatActivity() {
         // On-click listeners for class menu options
         notesButton.setOnClickListener {
             // TODO: Start notes activity, using classNotes as the data
+            intent = Intent(this@ClassViewActivity, NotesActivity::class.java)
+            intent.putExtra("className", className)
+            intent.putExtra("classId", classId)
+            intent.putExtra("classNotes", classNotes)
+            startActivity(intent)
         }
         flashcardsButton.setOnClickListener {
             // TODO: Start flashCards activity, using classFlashcards as the data
