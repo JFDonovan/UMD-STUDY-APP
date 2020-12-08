@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 
 //import java.util.ArrayList
@@ -39,7 +37,30 @@ class ViewFiles : AppCompatActivity(){
         }
 
         mDatabaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH_UPLOADS)
-        mDatabaseReference!!.addValueEventListener
+        mDatabaseReference!!.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+                println(p0!!.message)
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (postSnapshot in dataSnapshot.children) {
+                    val upload = postSnapshot.getValue(Upload::class.java)!!
+                    (uploadList as ArrayList<Upload>).add(upload)
+                }
+
+                val uploads = arrayOfNulls<String>(uploadList.size)
+
+                for (i in uploads.indices) {
+                    uploads[i] = uploadList[i].name
+                }
+
+                val adapter = ArrayAdapter<String>(
+                    applicationContext, android.R.layout.simple_list_item_1, uploads
+                )
+                listView!!.adapter = adapter
+            }
+        })
 
 
 

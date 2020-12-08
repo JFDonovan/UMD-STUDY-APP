@@ -33,9 +33,10 @@ class ResourceActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resource)
-
+        val dbURL : String = "https://umd-study-app-default-rtdb.firebaseio.com/"
+        val storageURL: String = "gs://umd-study-app.appspot.com"
         mStorageReference = FirebaseStorage.getInstance().reference
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH_UPLOADS)
+        mDatabaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl(dbURL)
 
         ViewStatus = findViewById<TextView>(R.id.ViewStatus_text)
         editTextFilename = findViewById<EditText>(R.id.editTextFileName)
@@ -70,7 +71,7 @@ class ResourceActivity : AppCompatActivity(){
         ) {
             val intent = Intent(
                 Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                Uri.parse("package:$packageName")
+                Uri.parse("package:".plus(" ").plus(packageName))
             )
             startActivity(intent)
             return
@@ -100,7 +101,8 @@ class ResourceActivity : AppCompatActivity(){
 
     private fun uploadFile(data: Uri){
         progressBar!!.visibility = View.VISIBLE
-        val sRef = mStorageReference!!.child(STORAGE_PATH_UPLOADS + System.currentTimeMillis() + ".pdf")
+        val pathStr : String = STORAGE_PATH_UPLOADS + System.currentTimeMillis().toString() + ".pdf"
+        val sRef = mStorageReference!!.child(pathStr)
         sRef.putFile(data).addOnSuccessListener { taskSnapshot ->
             progressBar!!.visibility = View.GONE
             ViewStatus.text = "File Uploaded Successfully"
@@ -115,7 +117,7 @@ class ResourceActivity : AppCompatActivity(){
 
         }.addOnFailureListener {
             exception ->
-                Toast.makeText(getApplicationContext(), exception.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, exception.message, Toast.LENGTH_LONG).show()
 
         }.addOnProgressListener {
             taskSnapshot->
