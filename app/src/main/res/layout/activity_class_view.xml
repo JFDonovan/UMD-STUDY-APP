@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/IndianRed"
     tools:context=".ClassViewActivity">
 
     <LinearLayout
@@ -24,20 +25,14 @@
         <Button
             android:id="@+id/notesButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:text="Notes" />
 
         <Button
             android:id="@+id/flashcardsButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:text="Flashcards" />
-
-        <Button
-            android:id="@+id/resourcesButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Resources" />
 
         <TextView
             android:id="@+id/classCodeView"
