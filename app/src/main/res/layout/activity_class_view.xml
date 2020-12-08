@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
+        android:layout_margin="50px"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="51dp">
         <TextView
@@ -17,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:textSize="32dp"
+            android:gravity="center"
             android:text="TextView" />
 
         <Button
@@ -36,6 +38,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Resources" />
+
+        <TextView
+            android:id="@+id/classCodeView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textIsSelectable="true"
+            android:gravity="center"
+            android:paddingTop="50dp"
+            android:text="TextView" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

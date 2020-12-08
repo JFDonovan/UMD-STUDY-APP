@@ -13,7 +13,6 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".AddFlashcardActivity" />
         <activity android:name=".FlashcardActivity" />
-        <activity android:name=".FlashcardMenuActivity" />
         <activity android:name=".JoinClassActivity" />
         <activity android:name=".CreateClassActivity" />
         <activity android:name=".ClassViewActivity" />

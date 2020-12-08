@@ -10,9 +10,11 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import org.w3c.dom.Text
 import java.io.File
 
 class ClassViewActivity : AppCompatActivity() {
+    // Class Fields
     private var classId: String = ""
     private var className: String = ""
     private var classNotes: HashMap<String, String>? = null
@@ -23,6 +25,7 @@ class ClassViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_class_view)
 
+        // Set class fields from last intent (redundant with listener)
         classId = intent.extras?.get("classId") as String
         className = intent.extras?.get("className") as String
         classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
@@ -47,12 +50,18 @@ class ClassViewActivity : AppCompatActivity() {
             }
         })
 
+        // Get Views
         val classNameView = findViewById<TextView>(R.id.classNameView)
         val notesButton = findViewById<Button>(R.id.notesButton)
         val flashcardsButton = findViewById<Button>(R.id.flashcardsButton)
         val resourcesButton = findViewById<Button>(R.id.resourcesButton)
+        val classCodeView = findViewById<TextView>(R.id.classCodeView)
 
+        // Set class name and id fields (id is selectable)
         classNameView.text = className
+        classCodeView.text = classId
+
+        // On-click listeners for class menu options
         notesButton.setOnClickListener {
             // TODO: Start notes activity, using classNotes as the data
         }

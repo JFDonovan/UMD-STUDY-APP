@@ -14,20 +14,21 @@ class AddFlashcardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_flashcard)
 
+        // Get Views
         val questionView = findViewById<EditText>(R.id.newFlashcardQuestion)
         val answerView = findViewById<EditText>(R.id.newFlashcardAnswer)
         val submitButton = findViewById<Button>(R.id.createFlashcardSubmitButton)
 
+        // Submit button click listener
         submitButton.setOnClickListener {
+            // Gets class id as extra
             val classId = intent.getStringExtra("classId")
+            // Gets field values
             var question = questionView.text.toString()
             var answer = answerView.text.toString()
+            // If valid input write to database
             if (question.isNotEmpty() && answer.isNotEmpty()) {
                 Log.i(CreateClassActivity.TAG, "Create Flashcard: $question ||| $answer \nClass ID: $classId")
-                // TODO: send new flashcard to database with "question" as question and answer as answer NOTE: make
-                //  sure that adding to database causes classview to update (timing may get weird causing
-                //  need to wait for response that writing was successful)
-
                 var flashcardId = UUID.randomUUID().toString()
                 var flashcardObj = arrayListOf<String>(question, answer)
                 var classFlashcardsRef = FirebaseDatabase.getInstance().getReference("Classes").child(classId!!).child("flashcards")
@@ -41,8 +42,6 @@ class AddFlashcardActivity : AppCompatActivity() {
                 toast.show()
             }
         }
-
-
     }
 
     companion object {

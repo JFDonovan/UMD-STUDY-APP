@@ -26,6 +26,7 @@
             android:id="@+id/createClassSubmitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#00CC66"
             android:text="Create" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

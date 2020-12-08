@@ -26,6 +26,7 @@
             android:id="@+id/joinClassSubmitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#66B2FF"
             android:text="Join" />
     </LinearLayout>
 

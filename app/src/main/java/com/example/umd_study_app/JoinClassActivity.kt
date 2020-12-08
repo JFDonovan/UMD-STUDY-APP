@@ -11,16 +11,18 @@ class JoinClassActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_class)
+        // Get Views
         val joinClassCodeView = findViewById<EditText>(R.id.joinClassCodeView)
         val joinClassSubmitButton = findViewById<Button>(R.id.joinClassSubmitButton)
+
+        // Getting User ID and Class list from Extras
         var userId = intent.getStringExtra("userId")
         var userClassList = intent.extras?.get("userClassList") as ArrayList<String>
 
+        // On Submission write to database
         joinClassSubmitButton.setOnClickListener {
             var code = joinClassCodeView.text.toString()
             Log.i(TAG, "Join Class: $code")
-            // TODO: join class on database with "code" as code and "userId" as user id NOTE: make sure that adding to database causes classview to update (timing may get weird causing need to wait for response that writing was successful)
-
             var userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
             userClassList.add(code)
             userRef.child("classes").setValue(userClassList)
