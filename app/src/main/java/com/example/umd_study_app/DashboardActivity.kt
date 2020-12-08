@@ -53,8 +53,7 @@ class DashboardActivity : AppCompatActivity() {
         // TODO: get user object (either as extra from when intent is created or from database now) and set the following fields
         userClasses = arrayListOf("TEMP", "TEMP", "TEMP")//, "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP", "TEMP") // TEMP
         todoItems = hashMapOf(100 to hashMapOf("task" to "Eat ur homework", "category" to "Example Class")) // TEMP
-
-        userId = intent.extras?.get("userId") as String
+        userId = intent.extras?.get("userId") as? String
         mThisUserDatabase = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
         mThisUserDatabase.addValueEventListener(object : ValueEventListener {

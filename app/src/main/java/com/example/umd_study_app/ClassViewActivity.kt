@@ -15,6 +15,7 @@ import java.io.File
 class ClassViewActivity : AppCompatActivity() {
     private var classId: String = ""
     private var className: String = ""
+    private lateinit var userId: String
     private var classNotes: HashMap<String, String>? = null
     private var classFlashcards: HashMap<String, ArrayList<String>>? = null
     private var classResources: HashMap<String, File>? = null
@@ -28,7 +29,7 @@ class ClassViewActivity : AppCompatActivity() {
         classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
         classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, ArrayList<String>>
         classResources = intent.extras?.get("classResources") as HashMap<String, File>
-
+        userId = intent.extras?.get("userId") as String
         // Add Database listeners for updates
         FirebaseDatabase.getInstance().getReference("Classes").child(classId).addValueEventListener(object :
             ValueEventListener {
@@ -55,6 +56,16 @@ class ClassViewActivity : AppCompatActivity() {
         classNameView.text = className
         notesButton.setOnClickListener {
             // TODO: Start notes activity, using classNotes as the data
+            intent = Intent(this@ClassViewActivity, NoteActivity::class.java)
+            intent.putExtra("userId", userId)
+            intent.putExtra("className", className)
+            intent.putExtra("resources", classResources )
+            intent.putExtra("flashcards", classFlashcards)
+            intent.putExtra("classId", classId)
+            intent.putExtra("classNotes", classNotes)
+            startActivity(intent)
+
+
         }
         flashcardsButton.setOnClickListener {
             // TODO: Start flashCards activity, using classFlashcards as the data
