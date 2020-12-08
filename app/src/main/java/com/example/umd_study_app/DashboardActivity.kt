@@ -70,6 +70,7 @@ class DashboardActivity : AppCompatActivity() {
                     putExtra("classNotes", classObj.notes)
                     putExtra("classFlashcards", classObj.flashcards)
                     putExtra("classResources", classObj.resources)
+                    putExtra("userId", userId)
                 }
                 startActivity(intent)
             }

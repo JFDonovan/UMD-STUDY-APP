@@ -10,7 +10,7 @@ import java.io.File
 class ClassViewActivity : AppCompatActivity() {
     private var classId: String = ""
     private var className: String = ""
-    private lateinit var userId : String
+    private lateinit var userId: String
     private var classNotes: HashMap<String, String>? = null
     private var classFlashcards: HashMap<String, Array<String>>? = null
     private var classResources: HashMap<String, File>? = null
@@ -27,7 +27,6 @@ class ClassViewActivity : AppCompatActivity() {
         classResources = intent.extras?.get("classResources") as HashMap<String, File>
         userId = intent.extras?.get("userId") as String
 
-
         val classNameView = findViewById<TextView>(R.id.classNameView)
         val notesButton = findViewById<Button>(R.id.notesButton)
         val flashcardsButton = findViewById<Button>(R.id.flashcardsButton)
@@ -35,20 +34,23 @@ class ClassViewActivity : AppCompatActivity() {
 
         classNameView.text = className
         notesButton.setOnClickListener {
-            // TODO: Start notes activity, using classNotes as the data
             intent = Intent(this@ClassViewActivity, NoteActivity::class.java)
             intent.putExtra("userId", userId)
             intent.putExtra("className", className)
+            intent.putExtra("resources", classResources )
+            intent.putExtra("flashcards", classFlashcards)
+            intent.putExtra("classId", classId)
+            intent.putExtra("classNotes", classNotes)
             startActivity(intent)
-
+            // TODO: Start notes activity, using classNotes as the data
         }
         flashcardsButton.setOnClickListener {
             // TODO: Start flashCards activity, using classFlashcards as the data
         }
         resourcesButton.setOnClickListener {
             // TODO: Start resources activity, using classResources as the data
-            intent = Intent(this@ClassViewActivity, ResourceActivity::class.java)
-            startActivity(intent)
+            //intent = Intent(this@ClassViewActivity, ResourceActivity::class.java)
+            //startActivity(intent)
 
         }
     }

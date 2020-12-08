@@ -17,6 +17,7 @@
         <activity android:name=".DashboardActivity" />
         <activity android:name=".ResourceActivity" />
         <activity android:name=".ViewFiles" />
+        <activity android:name=".NoteActivity" />
 
         <activity android:name=".MainActivity">
             <intent-filter>
