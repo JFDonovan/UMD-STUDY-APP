@@ -44,10 +44,9 @@ class LoginActivity : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = mAuth!!.currentUser
         Log.i(TAG, "USER SIGNED IN ALREADY")
-        startActivity(
+        /*startActivity(
             Intent(this, DashboardActivity::class.java).putExtra(
-                "userId", mAuth!!.uid))
-
+                "userId", mAuth!!.uid))*/
     }
 
     // TODO: Allow the user to log into their account
