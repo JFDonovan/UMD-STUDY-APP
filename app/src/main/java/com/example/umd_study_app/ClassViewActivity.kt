@@ -17,7 +17,7 @@ class ClassViewActivity : AppCompatActivity() {
     // Class Fields
     private var classId: String = ""
     private var className: String = ""
-    private var classNotes: HashMap<String, String>? = null
+    private var classNotes: String = ""
     private var classFlashcards: HashMap<String, ArrayList<String>>? = null
     private var classResources: HashMap<String, File>? = null
 
@@ -28,7 +28,7 @@ class ClassViewActivity : AppCompatActivity() {
         // Set class fields from last intent (redundant with listener)
         classId = intent.extras?.get("classId") as String
         className = intent.extras?.get("className") as String
-        classNotes = intent.extras?.get("classNotes") as HashMap<String, String>
+        classNotes = intent.extras?.get("classNotes") as String
         classFlashcards = intent.extras?.get("classFlashcards") as HashMap<String, ArrayList<String>>
         classResources = intent.extras?.get("classResources") as HashMap<String, File>
 
