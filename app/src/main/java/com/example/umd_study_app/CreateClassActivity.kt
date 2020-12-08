@@ -27,7 +27,7 @@ class CreateClassActivity : AppCompatActivity() {
             var name = createClassNameView.text.toString()
             Log.i(TAG, "Create Class: $name")
             var classId = UUID.randomUUID().toString()
-            var classObj = Class(classId, name, hashMapOf(), hashMapOf(), hashMapOf())
+            var classObj = Class(classId, name, "", hashMapOf(), hashMapOf())
             var classRef = FirebaseDatabase.getInstance().getReference("Classes")
             var userRef = FirebaseDatabase.getInstance().getReference("Users").child(userId!!)
 
